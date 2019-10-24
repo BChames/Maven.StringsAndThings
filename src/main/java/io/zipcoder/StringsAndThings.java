@@ -17,59 +17,82 @@ public class StringsAndThings {
 
     public Integer countYZ(String input) {
 
-        String str = input;
-        int counter = 0;
+        int ans = 0;
+        Character y = 'y';
+        Character z= 'z';
 
+        for(int i = 0; i < input.length() - 2; i++){
 
-        for (int i = 0; i < input.length(); i++) {
-            if (str.charAt(i) == 'y') {
-                counter++;
-                System.out.println(counter);
-            }
-            if (str.charAt(i) == 'z') {
-                counter++;
-                System.out.println(counter);
+            if ( Character.isLetter(input.charAt(i+1)) == false && (input.charAt(i) == y || input.charAt(i) == z)){
+                ans++;
             }
         }
-        return counter;
+
+            if (input.charAt(input.length()-1) == y || input.charAt(input.length()-1) == z){
+                ans++;
+        }
+        return ans;
     }
 
-        /**
-         * Given two strings, base and remove, return a version of the base string where all instances of the remove string have
-         * been removed (not case sensitive). You may assume that the remove string is length 1 or more.
-         * Remove only non-overlapping instances, so with "xxx" removing "xx" leaves "x".
-         *
-         * example : removeString("Hello there", "llo") // Should return "He there"
-         *           removeString("Hello there", "e") //  Should return "Hllo thr"
-         *           removeString("Hello there", "x") // Should return "Hello there"
-         */
-        public String removeString (String base, String remove){
-            return null;
+    /**
+     * Given two strings, base and remove, return a version of the base string where all instances of the remove string have
+     * been removed (not case sensitive). You may assume that the remove string is length 1 or more.
+     * Remove only non-overlapping instances, so with "xxx" removing "xx" leaves "x".
+     * <p>
+     * example : removeString("Hello there", "llo") // Should return "He there"
+     * removeString("Hello there", "e") //  Should return "Hllo thr"
+     * removeString("Hello there", "x") // Should return "Hello there"
+     */
+    public String removeString(String base, String remove) {
+        return base.replaceAll(remove, "");
+    }
+
+    /**
+     * Given a string, return true if the number of appearances of "is" anywhere in the string is equal
+     * to the number of appearances of "not" anywhere in the string (case sensitive)
+     * <p>
+     * example : containsEqualNumberOfIsAndNot("This is not")  // Should return false
+     * containsEqualNumberOfIsAndNot("This is notnot") // Should return true
+     * containsEqualNumberOfIsAndNot("noisxxnotyynotxisi") // Should return true
+     */
+    public Boolean containsEqualNumberOfIsAndNot(String input) {
+        String replaceIs = input.replaceAll("is", "*");
+        String replaceNot = input.replaceAll("not", "*");
+
+        int countIs = 0;
+        int countNot = 0;
+
+        for(int i = 0; 0 < replaceIs.length(); i++){
+            if(replaceIs.charAt(i) == '*'){
+                countIs++;
         }
 
-        /**
-         * Given a string, return true if the number of appearances of "is" anywhere in the string is equal
-         * to the number of appearances of "not" anywhere in the string (case sensitive)
-         *
-         * example : containsEqualNumberOfIsAndNot("This is not")  // Should return false
-         *           containsEqualNumberOfIsAndNot("This is notnot") // Should return true
-         *           containsEqualNumberOfIsAndNot("noisxxnotyynotxisi") // Should return true
-         */
-        public Boolean containsEqualNumberOfIsAndNot (String input){
-            return null;
-        }
+        for(int i = 0; 0 < replaceNot.length(); i++){
+                if(replaceIs.charAt(i) == '*'){
+                    countNot++;
+                }
 
-        /**
-         * We'll say that a lowercase 'g' in a string is "happy" if there is another 'g' immediately to its left or right.
-         * Return true if all the g's in the given string are happy.
-         * example : gHappy("xxggxx") // Should return  true
-         *           gHappy("xxgxx") // Should return  false
-         *           gHappy("xxggyygxx") // Should return  false
-         */
-        public Boolean gIsHappy (String input){
-            return null;
-        }
+        return null;
+    }
 
+
+    /**
+     * We'll say that a lowercase 'g' in a string is "happy" if there is another 'g' immediately to its left or right.
+     * Return true if all the g's in the given string are happy.
+     * example : gHappy("xxggxx") // Should return  true
+     * gHappy("xxgxx") // Should return  false
+     * gHappy("xxggyygxx") // Should return  false
+     */
+    public Boolean gIsHappy(String input) {
+
+        String str = input;
+        for (int i = 0; i < input.length(); i++) {
+            if (str.charAt(i) == 'g' && str.charAt(i + 1) == 'g') {
+                return true;
+            }
+        }
+        return false;
+    }
 
         /**
          * We'll say that a "triple" in a string is a char appearing three times in a row.
@@ -78,8 +101,26 @@ public class StringsAndThings {
          *            countTriple("xxxabyyyycd") // Should return 3
          *            countTriple("a") // Should return 0
          */
+
         public Integer countTriple (String input){
-            return null;
+
+            int count = 0;
+            String str = input;
+            for (int i = 0; i < input.length(); i++) {
+                if ( str.charAt(i) == str.charAt(i + 1) ) {
+                    System.out.println("go");
+                    if(str.charAt(i) == str.charAt(i + 2)) {
+                       count++;
+
+                    }
+
+                }
+
+            }
+
         }
+        return count;
     }
+
+
 
