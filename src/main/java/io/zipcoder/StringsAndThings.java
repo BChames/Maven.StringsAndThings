@@ -56,71 +56,78 @@ public class StringsAndThings {
      * containsEqualNumberOfIsAndNot("noisxxnotyynotxisi") // Should return true
      */
     public Boolean containsEqualNumberOfIsAndNot(String input) {
+
         String replaceIs = input.replaceAll("is", "*");
-        String replaceNot = input.replaceAll("not", "*");
+        replaceIs = replaceIs.replaceAll("not", "+");
 
         int countIs = 0;
         int countNot = 0;
 
-        for(int i = 0; 0 < replaceIs.length(); i++){
-            if(replaceIs.charAt(i) == '*'){
+        for (int i = 0; i < replaceIs.length(); i++) {
+            if (replaceIs.charAt(i) == '*') {
                 countIs++;
-        }
-
-        for(int i = 0; 0 < replaceNot.length(); i++){
-                if(replaceIs.charAt(i) == '*'){
-                    countNot++;
-                }
-
-        return null;
-    }
-
-
-    /**
-     * We'll say that a lowercase 'g' in a string is "happy" if there is another 'g' immediately to its left or right.
-     * Return true if all the g's in the given string are happy.
-     * example : gHappy("xxggxx") // Should return  true
-     * gHappy("xxgxx") // Should return  false
-     * gHappy("xxggyygxx") // Should return  false
-     */
-    public Boolean gIsHappy(String input) {
-
-        String str = input;
-        for (int i = 0; i < input.length(); i++) {
-            if (str.charAt(i) == 'g' && str.charAt(i + 1) == 'g') {
-                return true;
+            } else if (replaceIs.charAt(i) == '+') {
+                countNot++;
             }
         }
-        return false;
+
+
+
+
+
+
+
+
+        return countIs == countNot;
+
     }
 
-        /**
-         * We'll say that a "triple" in a string is a char appearing three times in a row.
-         * Return the number of triples in the given string. The triples may overlap.
-         * example :  countTriple("abcXXXabc") // Should return 1
-         *            countTriple("xxxabyyyycd") // Should return 3
-         *            countTriple("a") // Should return 0
-         */
 
-        public Integer countTriple (String input){
+            /**
+             * We'll say that a lowercase 'g' in a string is "happy" if there is another 'g' immediately to its left or right.
+             * Return true if all the g's in the given string are happy.
+             * example : gHappy("xxggxx") // Should return  true
+             * gHappy("xxgxx") // Should return  false
+             * gHappy("xxggyygxx") // Should return  false
+             */
+            public Boolean gIsHappy (String input){
 
-            int count = 0;
-            String str = input;
-            for (int i = 0; i < input.length(); i++) {
-                if ( str.charAt(i) == str.charAt(i + 1) ) {
-                    System.out.println("go");
-                    if(str.charAt(i) == str.charAt(i + 2)) {
-                       count++;
+                String str = input;
+                for (int i = 0; i < input.length(); i++) {
+                    if (str.charAt(i) == 'g' && str.charAt(i + 1) == 'g') {
+                        return true;
+                    }
+                }
+                return false;
+            }
 
+            /**
+             * We'll say that a "triple" in a string is a char appearing three times in a row.
+             * Return the number of triples in the given string. The triples may overlap.
+             * example :  countTriple("abcXXXabc") // Should return 1
+             *            countTriple("xxxabyyyycd") // Should return 3
+             *            countTriple("a") // Should return 0
+             */
+
+            public Integer countTriple (String input){
+
+                int count = 0;
+                String str = input;
+
+                for (int i = 0; i < input.length() - 3; i++) {
+                    if (str.charAt(i) == str.charAt(i + 1) && str.charAt(i+1) == str.charAt(i + 2) ) {
+                            count++;
                     }
 
-                }
+
+                  
+
+
+
+
 
             }
-
-        }
         return count;
-    }
+}
 
-
-
+}
